@@ -1,11 +1,11 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-const Pokedex = require("pokeapi-js-wrapper");
+import './App.css';
+import { useState, useEffect } from 'react';
+const Pokedex = require('pokeapi-js-wrapper');
 
 const customOptions = {
-  protocol: "https",
-  hostName: "pokeapi.co",
-  versionPath: "/api/v2/",
+  protocol: 'https',
+  hostName: 'pokeapi.co',
+  versionPath: '/api/v2/',
   cache: true,
   timeout: 5 * 1000, // 5 seconds.
   cacheImages: true,
@@ -32,11 +32,33 @@ function App() {
           }.png`,
         })
       );
+      setData(pokeData);
     });
-    setData(pokeData);
   }, []);
+  console.log(data, 'DATA');
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <div className="container">
+        <div className="title-container">
+          <div className="title">Name</div>
+          <div className="title">Picture</div>
+        </div>
+
+        <div className="data-container">
+          {data.length &&
+            data.map((pokemon) => (
+              <div className="pokemon-data-container">
+                <div className="data">{pokemon.name}</div>
+                <div className="data">
+                  <img src={pokemon.image} alt="pokemon"></img>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;
