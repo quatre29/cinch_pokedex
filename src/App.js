@@ -1,25 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
+import Pokedex from "pokedex-promise-v2";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.ss
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [data, setData] = useState();
+
+  const options = {
+    protocol: "https",
+    hostName: "pokeapi.co",
+    versionPath: "/api/v2/",
+    cacheLimitL: 100 * 1000,
+    timeout: 5 * 1000,
+  };
+
+  const P = new Pokedex(options);
+
+  P.getGenerationByName("generation-i").then((res) => {
+    console.log(res);
+  });
+
+  return <div className="App"></div>;
 }
 
 export default App;
