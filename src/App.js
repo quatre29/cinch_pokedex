@@ -18,7 +18,7 @@ function App() {
     const P = new Pokedex.Pokedex(customOptions);
     const interval = {
       offset: 0,
-      limit: 150,
+      limit: 151,
     };
 
     const pokeData = [];
