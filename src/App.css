@@ -52,3 +52,10 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+.popup-container {
+  position: absolute;
+  z-index: 100;
+  padding: 40px;
+  background-color: pink;
+}
